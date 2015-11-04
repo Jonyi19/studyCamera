@@ -14,7 +14,7 @@ class MyViewController : UIViewController, UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var myImageView: UIImageView!
     
     @IBAction func didTouchButton(sender: AnyObject) {
-        
+        print("Hello")
         let picker = UIImagePickerController()
         picker.sourceType = .PhotoLibrary
         picker.delegate = self
