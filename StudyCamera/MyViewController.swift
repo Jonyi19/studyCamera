@@ -2,9 +2,9 @@
 //  MyViewController.swift
 //  StudyCamera
 //
-//  Created by kinjo Ryuta on 2015/11/04.
-//  Copyright © 2015年 dreamarts. All rights reserved.
-//
+//  Created by Jonyi19 on 2015/11/04.
+//  Copyright © 2015年  All rights reserved.
+//  githubに登録
 
 import Foundation
 import UIKit
