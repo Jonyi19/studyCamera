@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 
-class MyViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MyViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource {
     
-    @IBOutlet weak var myImageView: UIImageView!
+    @IBOutlet weak var myTableView: UITableView!
+    
     
     @IBAction func didTouchButton(sender: AnyObject) {//ボタンを押すとフォトライブラリーを呼ぶ
         print("Hello")
@@ -24,7 +25,7 @@ class MyViewController : UIViewController, UIImagePickerControllerDelegate, UINa
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {//フォトライブラリーを画面にセット
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            myImageView.image = image
+     //       myImageView.image = image
             
         }
         picker.dismissViewControllerAnimated(true, completion: nil)
