@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+ /// メインクラス
+
 class MyViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var myTableView: UITableView!
@@ -23,33 +25,75 @@ class MyViewController : UIViewController, UIImagePickerControllerDelegate, UINa
         myTableView.delegate = self
         myTableView.dataSource = self
         
-        self.myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyTableViewCell")
+        //self.myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyTableViewCell")
 
     }
     
-    //テーブルのセクションの数
+    /**
+    テーブルのセクションの数
+    
+    - parameter tableView: <#tableView description#>
+    
+    - returns: セグメントの数を返す
+    */
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    //cellの数の指定
+    /**
+     cellの数の指定
+     
+     - parameter tableView: <#tableView description#>
+     - parameter section:   <#section description#>
+     
+     - returns: 挿入したimagesの数だけ返す
+     */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return images.count
     }
     
-    //Cellの生成
+    /**
+    Cellの生成
+    
+    - parameter tableView: <#tableView description#>
+    - parameter indexPath: <#indexPath description#>
+    
+    - returns: <#return value description#>
+    */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myTableView", forIndexPath: indexPath) as! ImageTableViewCell
-      //  cell.textLabel?.text = "test"
         
        cell.myImageView.image = images[indexPath.row]
         
         return cell
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        selectedRow = indexPath.row
+        
+        self.performSegueWithIdentifier("OpenImageSegue", sender: nil)
+    }
 
+    /**
+     
+     
+     - parameter segue:  <#segue description#>
+     - parameter sender: <#sender description#>
+     */
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "OpenImageSegue" {
+            let vc = segue.destinationViewController as! DetailImageViewController
+            vc.image = images[selectedRow!]
+        }
+    }
     
-    
-    @IBAction func didTouchButton(sender: AnyObject) {//ボタンを押すとフォトライブラリーを呼ぶ
+    /**
+     ボタンを押すとフォトライブラリーを呼ぶ
+     
+     - parameter sender: わかんない
+     */
+    @IBAction func didTouchButton(sender: AnyObject) {
         print("Hello")
         let picker = UIImagePickerController()
         picker.sourceType = .PhotoLibrary
@@ -57,8 +101,13 @@ class MyViewController : UIViewController, UIImagePickerControllerDelegate, UINa
         
         self.presentViewController(picker, animated: true, completion: nil)
     }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {//フォトライブラリーを画面にセット
+    /**
+     フォトライブラリーを画面にセット
+     
+     - parameter picker: 聞く
+     - parameter info: 聞く
+     */
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             images.append(image)
             myTableView.reloadData()
@@ -70,8 +119,22 @@ class MyViewController : UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
 }
-
+/// セルの中のViewのクラス
 class ImageTableViewCell : UITableViewCell{
     
     @IBOutlet weak var myImageView: UIImageView!
+}
+
+/**
+詳細画面のクラス
+*/
+class DetailImageViewController: UIViewController {
+    
+    @IBOutlet weak var myImageView: UIImageView!
+    
+    weak var image:UIImage?
+    
+    override func viewDidLoad() {
+        myImageView.image = image
+    }
 }
