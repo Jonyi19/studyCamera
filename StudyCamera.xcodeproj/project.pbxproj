@@ -48,7 +48,7 @@
 		3549EEDE1BEA2BAF0078078D /* StudyCameraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudyCameraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3549EEE21BEA2BAF0078078D /* StudyCameraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCameraUITests.swift; sourceTree = "<group>"; };
 		3549EEE41BEA2BAF0078078D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3549EEF01BEA2F080078078D /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		3549EEF01BEA2F080078078D /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MyViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,6 +488,7 @@
 				3549EEE91BEA2BAF0078078D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3549EEEA1BEA2BAF0078078D /* Build configuration list for PBXNativeTarget "StudyCameraTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +497,7 @@
 				3549EEEC1BEA2BAF0078078D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3549EEED1BEA2BAF0078078D /* Build configuration list for PBXNativeTarget "StudyCameraUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +506,7 @@
 				3549EEEF1BEA2BAF0078078D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
