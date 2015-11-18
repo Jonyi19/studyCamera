@@ -1,11 +1,11 @@
-//
-//  MyViewController.swift
-//  StudyCamera
-//
-//  Created by Jonyi19 on 2015/11/04.
-//  Copyright © 2015年  All rights reserved.
-//  githubに登録
+/*
+  MyViewController.swift
+  StudyCamera
 
+  Created by Jonyi19 on 2015/11/04.
+  Copyright © 2015年  All rights reserved.
+  githubに登録
+*/
 import Foundation
 import UIKit
 
@@ -51,6 +51,10 @@ class MyViewController : UIViewController, UIImagePickerControllerDelegate, UINa
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return images.count
     }
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 200
+    }
     
     /**
     Cellの生成
@@ -64,7 +68,6 @@ class MyViewController : UIViewController, UIImagePickerControllerDelegate, UINa
         let cell = tableView.dequeueReusableCellWithIdentifier("myTableView", forIndexPath: indexPath) as! ImageTableViewCell
         
        cell.myImageView.image = images[indexPath.row]
-        
         return cell
     }
     
@@ -109,17 +112,41 @@ class MyViewController : UIViewController, UIImagePickerControllerDelegate, UINa
      */
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            images.append(image)
-            myTableView.reloadData()
             
-            //myTableView.image = image
+            //サーバーに送って、結果をimageにsetする
+            let jpegData:NSData = UIImageJPEGRepresentation(image, 0.5)!
+            let base64recorded:String = jpegData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.init(rawValue: 0))
+            
+            let parass:Dictionary<String, String> = [
+                "image":base64recorded
+            ]
+            
+            
+            let session = AFHTTPSessionManager()
+            session.responseSerializer = AFImageResponseSerializer()
+            session.POST("https://support.shoprun.jp/club/image/stamp", parameters: parass, success: {
+                [weak self] (task, responsdata) in
+                let image = responsdata as! UIImage
+                
+                if let wself = self{
+                    wself.images.append(image)
+                    wself.myTableView.reloadData()
+                }
+                
+                }, failure: nil)
+            
+//            images.append(image)
+//            myTableView.reloadData()
             
         }
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
-/// セルの中のViewのクラス
+
+/**
+セルの中のViewのクラス
+*/
 class ImageTableViewCell : UITableViewCell{
     
     @IBOutlet weak var myImageView: UIImageView!

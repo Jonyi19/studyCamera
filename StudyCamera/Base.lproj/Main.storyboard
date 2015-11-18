@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--写真-->
@@ -17,24 +18,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="94" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Te-9R-Wb7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="104" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Te-9R-Wb7">
                                 <rect key="frame" x="0.0" y="64" width="605" height="536"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MyTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="myTableView" rowHeight="94" id="Ihs-CV-kkd" customClass="ImageTableViewCell" customModule="StudyCamera" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="605" height="94"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MyTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="myTableView" rowHeight="104" id="Ihs-CV-kkd" customClass="ImageTableViewCell" customModule="StudyCamera" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="605" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ihs-CV-kkd" id="gO8-cx-Aa7">
-                                            <rect key="frame" x="0.0" y="0.0" width="605" height="93"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="605" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="MyImageCell" translatesAutoresizingMaskIntoConstraints="NO" id="IR9-SL-w8n">
-                                                    <rect key="frame" x="0.0" y="-6" width="597" height="101"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="MyImageCell" translatesAutoresizingMaskIntoConstraints="NO" id="IR9-SL-w8n">
+                                                    <rect key="frame" x="8" y="-6" width="583" height="101"/>
                                                     <animations/>
                                                 </imageView>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="IR9-SL-w8n" firstAttribute="leading" secondItem="gO8-cx-Aa7" secondAttribute="leadingMargin" id="1Hx-VE-GUF"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="IR9-SL-w8n" secondAttribute="trailing" id="8ic-Au-07c"/>
+                                                <constraint firstItem="IR9-SL-w8n" firstAttribute="top" secondItem="gO8-cx-Aa7" secondAttribute="topMargin" constant="-14" id="Us9-Pe-fcx"/>
+                                                <constraint firstItem="IR9-SL-w8n" firstAttribute="bottom" secondItem="gO8-cx-Aa7" secondAttribute="bottomMargin" id="tyY-EN-XAa"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
@@ -46,6 +53,13 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Te-9R-Wb7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="0yt-RX-eR0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Te-9R-Wb7" secondAttribute="trailing" constant="-20" id="16X-B9-Lan"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Te-9R-Wb7" secondAttribute="trailing" constant="-20" id="2Mr-IB-FWT"/>
+                            <constraint firstItem="Oxu-Zp-PV0" firstAttribute="top" secondItem="7Te-9R-Wb7" secondAttribute="bottom" id="SPB-1v-hbE"/>
+                            <constraint firstItem="7Te-9R-Wb7" firstAttribute="top" secondItem="pk5-LP-sp6" secondAttribute="bottom" id="nHz-r6-lNF"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="写真" id="zof-1t-0kU">
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="93w-CC-r3d">
@@ -75,13 +89,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H5s-DD-u6U">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H5s-DD-u6U">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <animations/>
                             </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="H5s-DD-u6U" firstAttribute="leading" secondItem="dDP-Ge-094" secondAttribute="leading" id="7G9-Oo-7Y4"/>
+                            <constraint firstItem="H5s-DD-u6U" firstAttribute="top" secondItem="Gve-Vp-j3X" secondAttribute="bottom" id="L2P-Wa-LBx"/>
+                            <constraint firstAttribute="trailing" secondItem="H5s-DD-u6U" secondAttribute="trailing" id="N2t-g0-Trf"/>
+                            <constraint firstItem="Ljg-kK-pMg" firstAttribute="top" secondItem="H5s-DD-u6U" secondAttribute="bottom" id="p7e-GP-AOX"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="myImageView" destination="H5s-DD-u6U" id="t08-f5-sOj"/>
